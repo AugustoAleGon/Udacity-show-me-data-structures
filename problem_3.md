@@ -13,8 +13,15 @@ Insert a new element in the sorted list, this is a helper method. Time complexit
 ### Huffman Encoding ###
 Creates the tree, using the helpers methods. This operation remove all the elements from the list and creates the huffman tree, the complexity of this operation is O(n), but one of the helpers methods has a bigger O notation. So the time complexity of encoding is O(n)*log(n).
 
+
 ### Encode Tree ###
-Generates the binary code for each char in the huffman tree. The enconde tree iterates through the whole tree using the root key and assigned a string value.
+Generates the binary code for each char in the huffman tree. The enconde tree iterates through the whole tree using the root key and assigned a string value. 
 
 ### Huffman Decoding ###
 Decode the data and the Huffman tree and returns the sentences that we encode in the previous function. We iterate through the whole tree using a recursive function. The complexity of this in time is O(n)
+
+### Final Results ###
+For encoding: O((n) * log(n))
+For decoding: O(n)
+
+N is reference for the entry values that we are having, in the huffman coding the entry values are the phrases we are encoding.

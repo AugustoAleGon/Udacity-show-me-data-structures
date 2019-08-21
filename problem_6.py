@@ -48,17 +48,44 @@ class LinkedList:
         return linked_list_set
 
 def union(llist_1, llist_2):
-    union_set = llist_1.llist_to_set().union(llist_2.llist_to_set())
+    # Previous solution
+    # union_set = llist_1.llist_to_set().union(llist_2.llist_to_set())
     union_llist = LinkedList()
-    for value in union_set:
-        union_llist.append(value)
+    elements = set()
+    head = llist_1.head
+    while head != None:
+        if head.value not in elements:
+            elements.add(head.value)
+            union_llist.append(head.value)
+        head = head.next
+    
+    head = llist_2.head
+    while head != None:
+        if head.value not in elements:
+            elements.add(head.value)
+            union_llist.append(head.value)
+        head = head.next
+    
     return union_llist
 
 def intersection(llist_1, llist_2):
-    intersection_set = llist_1.llist_to_set().intersection(llist_2.llist_to_set())
+    # Previous solution
+    # intersection_set = llist_1.llist_to_set().intersection(llist_2.llist_to_set())
     intersection_llist = LinkedList()
-    for value in intersection_set:
-        intersection_llist.append(value)
+    elements = set()
+    head = llist_1.head
+    while head != None:
+        if head.value not in elements:
+            elements.add(head.value)
+        head = head.next
+
+    head = llist_2.head
+
+    while head != None:
+        if head.value in elements:
+            elements.discard(head.value)
+            intersection_llist.append(head.value)
+        head = head.next
     return intersection_llist
 
 
@@ -95,3 +122,20 @@ for i in element_2:
 
 print (union(linked_list_3,linked_list_4).__str__())
 print (intersection(linked_list_3,linked_list_4).__str__())
+
+# Test case 3
+
+linked_list_5 = LinkedList()
+linked_list_6 = LinkedList()
+
+element_5 = [2]
+element_6 = [1, 2, 3, 4]
+
+for i in element_5:
+    linked_list_5.append(i)
+
+for i in element_6:
+    linked_list_6.append(i)
+
+print (union(linked_list_5,linked_list_6).__str__())
+print (intersection(linked_list_5,linked_list_6).__str__())

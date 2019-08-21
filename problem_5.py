@@ -26,6 +26,8 @@ class BlockChain:
         self.tail = None
     
     def add(self, data):
+        if data == None:
+            return
         if self.tail is None:
             self.tail = Block(str(datetime.now().timestamp()), data, None)
         else:
@@ -80,7 +82,13 @@ def test_created_before():
 
     print("Pass" if current == start else "Not Passed")
 
+def test_empty_blockchain():
+    blockchain = BlockChain()
+    blockchain.add("")
+    blockchain.add(None)
+    blockchain.print_blockchain()
 
 test_block_created()
 test_hash_matching()
 test_created_before()
+test_empty_blockchain()

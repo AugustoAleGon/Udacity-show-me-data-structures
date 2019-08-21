@@ -1,4 +1,5 @@
 import os
+import warnings
 
 def find_files(suffix, path):
     """
@@ -17,6 +18,13 @@ def find_files(suffix, path):
        a list of paths
     """
     list_suffix_files = []
+    if (suffix == None or path == None):
+      warnings.warn('Invalid entry')
+      return
+   
+    if (len(suffix) == 0):
+      warnings.warn('Invalid entry')
+      return
     list_suffix_files = recursive_find_files(suffix, path, list_suffix_files)
     return list_suffix_files
 
@@ -52,7 +60,17 @@ def test_search_avi():
    result = find_files(".avi", "./")
    print(result)
 
+def test_udacity():
+   result = find_files('', "./")
+   print(result)
+
+def test_search_null():
+   result = find_files(None, None)
+   print(result)
+
 test_dir()
 test_search_py()
 test_search_md()
 test_search_avi()
+test_udacity()
+test_search_null()

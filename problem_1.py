@@ -56,11 +56,9 @@ class LRU_Cache(object):
         if self.full_capacity():
             # We need to remove the oldest element
             remove_value = self.data.dequeue()
-            self.data.enqueue(key, value)
             self.cache.pop(remove_value.key)
-        else:
-            self.data.enqueue(key, value)
-            self.cache[key] = value
+        self.cache[key] = value
+        self.data.enqueue(key, value)
     
     def reorder_cache(self):
         new_tail = self.data.dequeue()
@@ -146,3 +144,13 @@ def test_empty():
 test_cache_5()
 test_cache_6()
 test_empty()
+
+def test_udacity():
+    print('Edge Case with an exiting value')
+    our_cache = LRU_Cache(1)
+    our_cache.set(10, 1)
+    print(our_cache.get(10))
+    our_cache.set(10, 2)
+    print(our_cache.get(10))   #its returning -1 instead it should return 2
+
+test_udacity()

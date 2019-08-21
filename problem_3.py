@@ -137,7 +137,22 @@ def test_empty_sentence():
     if not encoded_data and not tree:
         print("success", "data not encoded")
 
+def test_edge_case():
+    edge_case = "aaaaa"
+    print("The size of the data is: {}\n".format(sys.getsizeof(edge_case)))
+    print("The content of the data is: {}\n".format(edge_case))
+
+    encoded_data, tree = huffman_encoding(edge_case)
+
+    print("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+    print("The content of the encoded data is: {}\n".format(encoded_data))
+
+    decoded_data = huffman_decoding(encoded_data, tree.root)
+
+    print("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+    print("The content of the decoded data is: {}\n".format(decoded_data))
 
 test_one_word_sentence()
 test_great_sentence()
 test_empty_sentence()
+test_edge_case()
