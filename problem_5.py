@@ -39,7 +39,9 @@ class BlockChain:
     def print_blockchain(self):
         tail = self.tail
         while tail is not None:
-            print("<-", tail.data, tail.hash, tail.get_gmt_time())
+            print("TIMESTAMP: ", tail.get_gmt_time(),"\nDATA: ",tail.data, "\nSHA256 HASH:", tail.hash,
+            "\nPREVIOUS HASH: ", tail.previous_hash)
+            print("---------------------")
             tail = tail.previous_hash
     
 
